@@ -1,11 +1,14 @@
 const express = require("express");
 const path = require("path");
+
 const PORT = process.env.PORT || 8800;
 let userZIP = 00000;
 let userName = "Millenial College Kid";
 
 var app = express();
 app.use(express.static(path.join(__dirname + "public")));
+app.use(express.json());
+app.use(express.urlencoded({extended: true}));
 
 app.get("/allPuppies", function (req, res) {
     //TODO: Query all active puppies in the users zip code, sorted by something.
@@ -58,10 +61,21 @@ app.get("/myOffers", function (req, res) {
 
     res.json(result);
 });
+
 app.get("/rateUsers", function (req, res) {
     console.log("Waiting for an email address.");
-
     //TODO: Ask for a email adress and then Query user with that email.
+    
+    res.json(result);
+});
+
+app.post("/rateUsers/findUser", function (req, res) {
+    //TODO: Ask for a email adress and then Query user with that email.
+
+    //let email = "...oh wait, nevermind. I got nothing.";
+    let email = req.body.email;
+    console.log("Got email address " + email);
+    res.json({success:true});
 });
 
 app.listen(PORT, function () {
