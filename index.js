@@ -14,7 +14,7 @@ app.use(express.urlencoded({
     extended: true
 }));
 
-app.get("/", './views/home.ejs'); 
+app.get("/home", './views/home.ejs'); 
 app.get("/allPuppies", puppyCtrl.getAllPups);
 app.get("/myPuppies", puppyCtrl.getMyPups);
 app.get("/puppysNeeds", needCtrl.getNeeds);
