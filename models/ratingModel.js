@@ -1,3 +1,9 @@
+const {Pool} = require("pg");
+
+const bd_url = process.env.DATABASE_URL;
+
+const pool = new Pool({connectionString: db_url})
+
 function getRating(personEmail, callback) {
 
     let results = {

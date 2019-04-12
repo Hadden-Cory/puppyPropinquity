@@ -6,6 +6,7 @@ const puppyCtrl = require("./controllers/puppyController.js");
 const personCtrl = require("./controllers/personController.js");
 const PORT = process.env.PORT || 8800;
 
+
 var app = express();
 app.use(express.static(path.join(__dirname + "public")));
 app.use(express.json());
@@ -13,11 +14,11 @@ app.use(express.urlencoded({
     extended: true
 }));
 
-app.get("/allPuppies", puppyCtrl.getAllPups());
-app.get("/myPuppies", puppyCtrl.getMyPups());
-app.get("/puppysNeed", needCtrl.getNeeds());
-app.get("/myOffers", offerCtrl.getOffers());
-app.get("/rateUsers", personCtrl.getRating());
+app.get("/allPuppies", puppyCtrl.getAllPups);
+app.get("/myPuppies", puppyCtrl.getMyPups);
+app.get("/puppysNeeds", needCtrl.getNeeds);
+app.get("/myOffers", offerCtrl.getOffers);
+app.get("/rateUsers", personCtrl.getRating);
 
 app.listen(PORT, function () {
     console.log("Server listening on port " + PORT)

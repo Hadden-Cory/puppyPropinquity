@@ -1,4 +1,4 @@
-let needMod = require("../models/needsModel.js");
+let needMod = require("../models/needModel.js");
 
 function getNeeds (req, res) {
     
