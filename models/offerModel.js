@@ -1,6 +1,9 @@
 const {Pool} = require("pg");
 
-const bd_url = process.env.DATABASE_URL;
+const db_url = process.env.DATABASE_URL;
+
+console.log("DB URL:"+db_url)
+const pool = new Pool({connectionString: db_url})
 
 function getOffers(callback, needId) {
 

@@ -4,6 +4,7 @@ const offerCtrl = require("./controllers/offerController.js");
 const needCtrl = require("./controllers/needController.js");
 const puppyCtrl = require("./controllers/puppyController.js");
 const personCtrl = require("./controllers/personController.js");
+require('dotenv').config();
 const PORT = process.env.PORT || 8800;
 
 
