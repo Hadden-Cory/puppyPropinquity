@@ -4,9 +4,6 @@ function getAllPups(req, res) {
     console.log("Loading all them dogos");
 
     puppyMod.getAllPuppies(function (results) {
-        console.log('Results '+ JSON.stringify(results));
-        console.log('Res '+res);
-        console.log('Req '+req);
         res.json(results) });
 }
 
