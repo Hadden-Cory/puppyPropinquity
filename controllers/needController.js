@@ -1,13 +1,16 @@
 let needMod = require("../models/needModel.js");
 
 function getNeeds (req, res) {
-    
-    needMod.getNeeds(function(results){
+    let puppyId = req.query.puppyId;
+    console.log('Puppy ID: '+puppyId);
+    needMod.getNeeds(puppyId, function(results){
         res.json(results)
     });
 }
 
-function getAllNeeds(){
+function getAllNeeds(req, res){
+    
+    
     needMod.getAllNeeds(function(results){
         res.json(results)
     }); 

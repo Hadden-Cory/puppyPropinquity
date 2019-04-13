@@ -5,27 +5,46 @@ const db_url = process.env.DATABASE_URL;
 const pool = new Pool({connectionString: db_url})
 
 
-function getOffers(callback, needId) {
+function getOffersMade(personId, callback) {
 
-    let results = {
-        offers: [{
-                offerId: "1",
-                offerComments: "I want to play tennis with a dog.",
-                offerPersonId: "4",
-                needId: "3"
-            },
-            {
-                offerId: "2",
-                offerComments: "I would love to break into the writing scene. Honestly music has been a bit of a drag recently. Time for something new. And I hate cats.",
-                offerPersonId: "3",
-                needId: "4"
-            }
-        ]
-    }
-
-    callback(results);
+    let params =[personId];
+    let sql = 'SELECT offer_id, need_need_id, offer_comments FROM offer WHERE person_person_id = $1::integer';
+    pool.query(sql, params, function(err, db_results){
+        if(err){
+            throw err;
+        } else {
+            console.log('DB RESULTS in Model else: '+db_results);
+            console.log(db_results);
+            let results = {
+                list:db_results.rows
+            };
+  
+            callback(results); 
+        }
+    });
 }
 
+function getOffersRecieved(needId, callback) {
+
+    let params =[needId];
+    let sql = 'SELECT person_person_id, offer_comments FROM offer WHERE need_need_id = $1::integer';
+    pool.query(sql, params, function(err, db_results){
+        if(err){
+            throw err;
+        } else {
+            console.log('DB RESULTS in Model else: '+db_results);
+            console.log(db_results);
+            let results = {
+                list:db_results.rows
+            };
+  
+            callback(results); 
+        }
+    });
+}
+
+
 module.exports = {
-    getOffers: getOffers
+    getOffersMade: getOffersMade,
+    getOffersRecieved : getOffersRecieved
 }

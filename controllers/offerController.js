@@ -1,10 +1,17 @@
 let offerMod = require("../models/offerModel.js");
 
-function getOffers (req, res) {
-    offerMod.getOffers(function(results){
+function getOffersMade (req, res) {
+    let personId = req.query.personId;
+    offerMod.getOffersMade(personId, function (results){
         res.json(results)});
     }
 
+function getOffersRecieved (req, res) {
+    let needId = req.query.needId;
+offerMod.getOffersRecieved(needId, function (results){
+    res.json(results)});
+}
 module.exports = {
-getOffers : getOffers
+getOffersMade : getOffersMade,
+getOffersRecieved : getOffersRecieved
 }

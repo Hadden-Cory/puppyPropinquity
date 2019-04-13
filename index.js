@@ -13,11 +13,12 @@ app.use(express.urlencoded({
     extended: true
 }));
 
-app.get("/allPuppies", puppyCtrl.getAllPups);
 app.get("/myPuppies", puppyCtrl.getMyPups);
+app.get("/Pup", puppyCtrl.getPup);
 app.get("/puppysNeeds", needCtrl.getNeeds);
 app.get("/needs", needCtrl.getAllNeeds);
-app.get("/myOffers", offerCtrl.getOffers);
+app.get("/OffersMade", offerCtrl.getOffersMade);
+app.get("/OffersRecieved", offerCtrl.getOffersRecieved);
 app.get("/rateUsers", personCtrl.getRating);
 
 app.listen(PORT, function () {
