@@ -4,6 +4,21 @@ const db_url = process.env.DATABASE_URL;
 
 const pool = new Pool({connectionString: db_url})
 
+function getAllNeeds(callback, db_results){
+    let sql="SELECT p.puppy_name, n.need_type, n.need_is_reoccuring, n.need_is_for_hire FROM puppy AS p RIGHT JOIN need AS n ON n.puppy_puppy_id = p.puppy_id;";
+
+    pool.query(sql, function(err, db_results){
+        if(err){
+            throw err;
+        } else {
+            console.log(db_results);
+            let results = {
+                list:db_results.rows
+            };
+            callback(null, results); 
+        }
+    });
+}
 
 function getNeeds(callback, puppyId) {
 
@@ -20,5 +35,6 @@ function getNeeds(callback, puppyId) {
 }
 
 module.exports = {
-    getNeeds: getNeeds
+    getNeeds: getNeeds,
+    getAllNeeds : getAllNeeds
 }

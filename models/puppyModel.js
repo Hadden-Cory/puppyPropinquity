@@ -20,7 +20,8 @@ function getPuppy(callback, puppyId) {
 
 function getAllPersonsPuppies(callback, personId) {
 
-    let sql="SELECT p.puppy_name, n.need_type, n.need_is_reoccuring, n.need_is_for_hire FROM puppy AS p INNER JOIN need AS n ON n.puppy_puppy_id = p.puppy_id;"
+    
+
 
     let results = {
         puppies: [{

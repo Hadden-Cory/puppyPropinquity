@@ -16,6 +16,7 @@ app.use(express.urlencoded({
 app.get("/allPuppies", puppyCtrl.getAllPups);
 app.get("/myPuppies", puppyCtrl.getMyPups);
 app.get("/puppysNeeds", needCtrl.getNeeds);
+app.get("/needs", needCtrl.getAllNeeds);
 app.get("/myOffers", offerCtrl.getOffers);
 app.get("/rateUsers", personCtrl.getRating);
 
