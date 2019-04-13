@@ -3,9 +3,9 @@ let ratingMod = require("../models/ratingModel.js");
 
 //Best example
 function getRating (req, res) {
-    let personEmail = "millenialKid95@Cmail.com";
-    ratingMod.getRating( function(results) {
-    res.json(results)}, personEmail);
+    let personEmail = req.query.personEmail;
+    ratingMod.getRating( personEmail, function(results) {
+    res.json(results)});
 }
 
 function getAllPersons(){

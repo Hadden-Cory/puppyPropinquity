@@ -6,13 +6,20 @@ const pool = new Pool({connectionString: db_url})
 
 function getRating(personEmail, callback) {
 
-    let results = {
-        ratingId: "1",
-        ratingOwner: "5",
-        ratingHelper: "3",
-    }
+    let params =[personEmail];
+    let sql = 'SELECT r.rating_owner_rating, r.rating_helper_rating FROM rating AS r INNER JOIN person AS p ON p.rating_rating_id = r.rating_id WHERE p.person_email = $1::text';
+    pool.query(sql, params, function(err, db_results){
+        if(err){
+            throw err;
+        } else {
 
-    callback(results);
+            let results = {
+                list:db_results.rows
+            };
+  
+            callback(results); 
+        }
+    });
 }
 
 module.exports = {
